@@ -14,9 +14,18 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 
 ## Code standards
 
-### Code Formatting Requirements
-- Every exported function should have a TSDoc comment describing its purpose, parameters, and return value.
-- Before imports or any code, add a comment block to the file that explains its purpose.
+### Comments and documentation
+
+- Begin each hand-authored TypeScript file with a comment block that explains the file's purpose.
+- Comment intent, constraints, and non-obvious decisions. Do not restate mechanics that are clear from the code.
+- Every exported function in `db/` and `src/lib/` must have a TSDoc comment that describes its purpose and includes `@param` and `@returns` documentation.
+- Document the `Props` interface of every reusable Astro component so its public contract is clear.
+- Treat outdated comments as bugs: update or remove them whenever the related code changes.
+
+### TypeScript formatting
+
+- Use explicit parameter and return types for exported functions.
+- Run ESLint after TypeScript or Astro changes; its recommended TypeScript and Astro rules enforce the formatting and correctness rules that can be checked automatically.
 
 ### Required Before Each Commit
 
@@ -35,11 +44,6 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 - When updating the database schema, generate and commit the drizzle-kit migration (`npm run db:generate`)
 - When adding new functionality, make sure you update the README
 - Make sure all guidance in the Copilot Instructions file is updated with any relevant changes, including to project structure and scripts, and programming guidance
-
-### Code formatting requirements
-
-- Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`)
-- Frontend code (TypeScript, Astro) must pass ESLint checks (`npm run lint`)
 
 ### Data Layer Patterns (Drizzle + Node SQLite)
 
